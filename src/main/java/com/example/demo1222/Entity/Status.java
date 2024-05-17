@@ -7,16 +7,17 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "roles")
-public class Role {
+@Table(name = "status")
+public class Status {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "role")
-    public List<UserRole> userRoles;
+    @OneToMany(mappedBy = "status")
+    public List<RequestGrade> requestGrades;
 
-
+    @OneToMany(mappedBy = "status")
+    public List<StudentAimStatus> studentAimStatuses;
 }

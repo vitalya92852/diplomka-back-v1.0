@@ -30,4 +30,6 @@ public class Grade {
     private int grade;
 
     private int week;
+
+
 }

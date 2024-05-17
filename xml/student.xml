@@ -1,0 +1,58 @@
+<students>
+    <student>
+        <full_name>Иванов Иван Иванович</full_name>
+        <group>Группа 1</group>
+        <course>1</course>
+        <semester number="1">
+            <week number="1">
+                <grade subject="Java">50</grade>
+                <grade subject="Python">0</grade>
+                <grade subject="Java">70</grade>
+            </week>
+            <week number="2">
+                <grade subject="Java">80</grade>
+                <grade subject="Python">10</grade>
+                <grade subject="Python">50</grade>
+            </week>
+            <week number="3">
+                <grade subject="Java">20</grade>
+                <grade subject="Python">30</grade>
+                <grade subject="Java">10</grade>
+            </week>
+            <week number="4">
+                <grade subject="Java">80</grade>
+                <grade subject="Python">100</grade>
+                <grade subject="Python">0</grade>
+            </week>
+
+        </semester>
+    </student>
+    <student>
+        <full_name>Петр Петров Петрович</full_name>
+        <group>Группа 2</group>
+        <course>2</course>
+        <semester number="1">
+            <week number="1">
+                <grade subject="Java">10</grade>
+                <grade subject="Python">10</grade>
+                <grade subject="Java">20</grade>
+            </week>
+            <week number="2">
+                <grade subject="Java">30</grade>
+                <grade subject="Python">30</grade>
+                <grade subject="Python">40</grade>
+            </week>
+            <week number="3">
+                <grade subject="Java">50</grade>
+                <grade subject="Python">50</grade>
+                <grade subject="Java">30</grade>
+            </week>
+            <week number="4">
+                <grade subject="Java">20</grade>
+                <grade subject="Python">90</grade>
+                <grade subject="Python">10</grade>
+            </week>
+        </semester>
+    </student>
+
+</students>

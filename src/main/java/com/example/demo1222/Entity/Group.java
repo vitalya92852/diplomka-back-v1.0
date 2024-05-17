@@ -7,16 +7,18 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "roles")
-public class Role {
+@Table(name="groupname")
+public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "role")
-    public List<UserRole> userRoles;
+    @OneToMany(mappedBy = "group")
+    public List<Student> studentList;
 
+    @OneToMany(mappedBy = "group")
+    public List<GroupSubjectTeacher> GroupSubjectTeachers;
 
 }

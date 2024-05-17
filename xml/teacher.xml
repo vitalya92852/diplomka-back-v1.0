@@ -1,0 +1,28 @@
+<teachers>
+    <teacher>
+        <full_name>Петров Петр Петрович</full_name>
+        <teaching_assignments>
+            <assignment>
+                <group>Группа 1</group>
+                <subject>Pascal</subject>
+            </assignment>
+            <assignment>
+                <group>Группа 2</group>
+                <subject>Английский</subject>
+            </assignment>
+        </teaching_assignments>
+    </teacher>
+    <teacher>
+        <full_name>Анатов Анатава Анатович</full_name>
+        <teaching_assignments>
+            <assignment>
+                <group>Группа 1</group>
+                <subject>Java</subject>
+            </assignment>
+            <assignment>
+                <group>Группа 2</group>
+                <subject>Python</subject>
+            </assignment>
+        </teaching_assignments>
+    </teacher>
+</teachers>

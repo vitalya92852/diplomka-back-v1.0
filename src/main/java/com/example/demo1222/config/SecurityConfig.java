@@ -5,6 +5,7 @@ import com.example.demo1222.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -18,6 +19,13 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -47,11 +55,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-            .csrf(AbstractHttpConfigurer::disable)                              // нужно переделать в будущем
-            .cors(httpSecurityCorsConfigurer ->                                 // это тоже
-                    httpSecurityCorsConfigurer.configurationSource(request ->
-                            new CorsConfiguration().applyPermitDefaultValues())
-            )
+            .csrf(AbstractHttpConfigurer::disable)                            // нужно переделать в будущем
+//            .cors(httpSecurityCorsConfigurer ->                                 // это тоже
+//                    httpSecurityCorsConfigurer.configurationSource(request ->
+//                            new CorsConfiguration().applyPermitDefaultValues())
+//            )
+            .cors(httpSecurityCorsConfigurer -> {
+                CorsConfiguration corsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
+                corsConfiguration.addAllowedMethod(HttpMethod.PUT);
+                corsConfiguration.addAllowedMethod(HttpMethod.GET);
+                corsConfiguration.addAllowedMethod(HttpMethod.POST);
+                httpSecurityCorsConfigurer.configurationSource(request -> corsConfiguration);
+            })
             .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(authorization -> {
@@ -67,7 +82,10 @@ public class SecurityConfig {
             .exceptionHandling()
             .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED));
 
+
         return http.build();
     }
+
+
 
 }

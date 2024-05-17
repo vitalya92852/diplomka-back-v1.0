@@ -16,16 +16,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-
-
-
-    private int age;
-
-    private String gender;
-
-    private int individualidentificationnumber;
-
     private String username;
 
     private String password;
@@ -38,6 +28,15 @@ public class User {
             joinColumns = @JoinColumn(name = "users_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Collection<Role> roles;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserRole> userRoles;
+
+    @OneToMany(mappedBy = "user")
+    public List<Student> studentList;
+
+    @OneToMany(mappedBy = "user")
+    public List<Teacher> teacherList;
 
 
 

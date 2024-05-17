@@ -6,17 +6,18 @@ import lombok.Data;
 import java.util.List;
 
 @Entity
+@Table(name = "aim")
 @Data
-@Table(name = "roles")
-public class Role {
+public class Aim {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
 
-    @OneToMany(mappedBy = "role")
-    public List<UserRole> userRoles;
+    @OneToMany(mappedBy = "aim")
+    public List<StudentAimStatus> studentAimStatuses;
 
-
+    @OneToMany(mappedBy = "aim")
+    public List<StudentAimNameInfo> studentAimNameInfos;
 }
